@@ -9,9 +9,20 @@ from django.http import JsonResponse
 import hashlib
 from . import models
 
+def welcome(request):
+    #return HttpResponse("Welcome to the Autoattendence system.")
+    text_template_dict = {'insert_here' : "This is the AA system!" }
+    return render(request, 'index.html', context=text_template_dict)
+
+def records(request):
+    records = models.AttendanceRecord.objects.order_by('dateTime')
+    record_template_dict = {'records':records}
+    return render(request, 'records.html', context=record_template_dict)
+
+
 no = 0
 qrCodeStayTime = 10000
-reloadTime = 10 * 60 * 1000
+reloadTime = 10 * 60 * 1000 
 
 # Create your views here.
 def loginView(request):

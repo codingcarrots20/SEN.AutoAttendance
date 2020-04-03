@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static%}
+<html>
+<head>
+	<title>Attendence Records</title>
+	<link rel="stylesheet" type="text/css" href="{%static 'homepage/css/records.css'%}">
+</head>
+<body>
+	<h1>Welcome! These are the attandence records so far.</h1>
+	<h2>These records are public so as you can verify your attendence is marked successfully or not.</h2>
+
+	<div class = 'records'>
+		{% if records %}
+		<table>
+			<thead>
+				<th>Student ID</th>
+				<th>Course ID</th>
+				<th>Attendance Time</th>
+			</thead>
+
+			{% for row in records  %}
+
+			<tr> 
+
+				<td>{{row.studentID}}</td> 
+				<td>{{row.courseID}}</td> 
+				<td>{{row.dateTime}}</td> 
+
+			</tr>
+			{% endfor %}
+		</table>
+
+
+
+		{% else %}
+			<p>No Records Available at the moment. Try again later</p>
+
+		{% endif %}
+		
+	</div>
+
+
+</body>
+</html>
