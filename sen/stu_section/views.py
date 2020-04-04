@@ -15,7 +15,7 @@ def loginView(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/scan')
+                return redirect('stu_section/scan')
             else:
                 message="Invalid username or password."
                 return render(request = request,

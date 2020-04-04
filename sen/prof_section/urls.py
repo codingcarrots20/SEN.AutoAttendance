@@ -1,9 +1,13 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.conf.urls import url
 
 urlpatterns = [
-    path('prof_sec', views.loginView),
+
+    url(r'^$', views.loginView),
     path('index/', views.index),
     path('getqr/', views.getqr),
+    
+    
 ]

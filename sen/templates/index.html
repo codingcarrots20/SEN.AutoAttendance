@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+{%load static%}
+
+<html>
+<head>
+	<title>AutoAttendence</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/index.css'%}">
+</head>
+<body>
+<h1>Welcome!</h1>
+
+<div class="img-container">
+<img src=" {% static 'homepage/images/logo.png' %}" alt="Error: Image isn't showing" align="center">	
+</div>
+
+<br>
+<h1>{{ insert_here }}</h1>
+
+
+<div class="iam">
+	<a href="prof_section/">I'm a Professor</a> <br>
+ 	<a href="stu_section/">I'm a Student</a><br>
+ 	<a href="records">Public Attendence Records</a><br>
+</div>
+ 
+
+</body>
+</html>
