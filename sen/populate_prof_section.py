@@ -16,7 +16,7 @@ ids = ['201701131','201701130','201701138','201701133']
 courses= ['IT413','CS203','HM413','IT303']
 def  add_record():
 	record = AttendanceRecord.objects.get_or_create(\
-		student`ID=random.choice(ids), courseID=random.choice(courses))[0]
+		studentID=random.choice(ids), courseID=random.choice(courses))[0]
 	record.save()
 	return record
 
