@@ -23,7 +23,7 @@ urlpatterns = [
     
     url(r'^admin/', admin.site.urls),
     url(r'prof_section/',include('prof_section.urls')),
-    url(r'stud_section/',include('stu_section.urls')),
+    url(r'stu_section/',include('stu_section.urls')),
     url(r'^$',views.welcome, name= "welcome" ),
     url(r'^records/', views.records, name="records"),
 ]
