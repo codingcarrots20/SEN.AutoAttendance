@@ -9,6 +9,10 @@ from django.http import JsonResponse
 import hashlib
 from . import models
 
+no = 0
+qrCodeStayTime = 10000
+reloadTime = 10 * 60 * 1000 
+
 def welcome(request):
     #return HttpResponse("Welcome to the Autoattendence system.")
     text_template_dict = {'insert_here' : "This is the AA system!" }
@@ -20,9 +24,7 @@ def records(request):
     return render(request, 'records.html', context=record_template_dict)
 
 
-no = 0
-qrCodeStayTime = 10000
-reloadTime = 10 * 60 * 1000 
+
 
 # Create your views here.
 def loginView(request):
