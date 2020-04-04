@@ -1,9 +1,8 @@
 
 from django.contrib import admin
 from django.urls import path,include
-from prof_section import views  
+from prof_section import views 
 from django.conf.urls import url,include
-from prof_section import views
 
 urlpatterns = [
     

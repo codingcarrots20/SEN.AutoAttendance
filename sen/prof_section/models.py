@@ -23,4 +23,4 @@ class Prof(models.Model):
     courses = models.CharField(max_length=100)
     
     def __str__(self):
-        return (self.user.username,self.courses)
+        return (self.user.username)
