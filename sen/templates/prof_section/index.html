@@ -22,7 +22,7 @@
             <option value="{{ course }}">{{ course }}</option>
             {% endfor %}
           </select>
-          <label>Materialize Select</label>
+          
         </div>
         <button class ="btn" type="submit" onclick="qrLoop()">Submit</button>
       </div>
@@ -40,13 +40,19 @@
 <script src="{% static "prof_section/js/qrcode.js" %}"></script>
   <script>
     function qrLoop(){
+      var course = document.getElementById("course");
+
+      if(course.value == "" || course.value == "none"){
+        return
+      }
+
       var heading = document.getElementsByClassName("message");
       heading[0].style.visibility = "visible";
 
 
       var qr = new QRCode(document.getElementById("qrcode"));
-      var course = document.getElementById("course");
-      var url = "/getqr?course=" + course.value;
+      
+      var url = "/prof_section/getqr?course=" + course.value;
 
       var xhttp = new XMLHttpRequest();
             

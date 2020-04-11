@@ -24,8 +24,6 @@ def records(request):
     return render(request, 'records.html', context=record_template_dict)
 
 
-
-
 # Create your views here.
 def loginView(request):
     if request.method == 'POST':
@@ -59,7 +57,10 @@ def index(request):
 
     username = request.user
     prof_obj = models.Prof.objects.filter(user__username = username)
-    courses  = prof_obj[0].courses.split(",")
+    if(prof_obj.exists()):
+        courses = prof_obj[0].courses.split(",")
+    else:
+        courses = ["no courses added"] 
     
     context ={
             "time" : qrCodeStayTime, 
