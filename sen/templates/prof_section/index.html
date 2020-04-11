@@ -24,7 +24,7 @@
           </select>
           
         </div>
-        <button class ="btn" type="submit" onclick="qrLoop()">Submit</button>
+        <button class ="btn" type="submit" onclick="qrLoop()">Take attendance</button>
       </div>
 
 
@@ -42,7 +42,8 @@
     function qrLoop(){
       var course = document.getElementById("course");
 
-      if(course.value == "" || course.value == "none"){
+      //preventing wrong and no choice submission
+      if(course.value == "" || course.value == "no courses added"){
         return
       }
 
