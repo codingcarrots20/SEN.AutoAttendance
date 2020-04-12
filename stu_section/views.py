@@ -5,33 +5,45 @@ from prof_section.models import AttendanceRecord
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from datetime import datetime
+from . import models
 
 def loginView(request):
+
+    message=""
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('/stu_section/scan')
+
+            Stu_obj = models.Student.objects.filter(user__username = username)
+
+            if Stu_obj.exists():
+
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    login(request, user)
+                    return redirect('/stu_section/scan')
+                else:
+                    message="Invalid username or password."
+                    return render(request = request,
+                        template_name = "stu_section/login.html",
+                        context={"form":form,
+                                "message":message})
             else:
-                message="Invalid username or password."
-                return render(request = request,
-                    template_name = "stu_section/login.html",
-                    context={"form":form,
-                            "message":message})
+                message="Please enter a correct username and password. Note that both fields may be case-sensitive."
         else:
             message= "Invalid username or password."
             return render(request = request,
                     template_name = "stu_section/login.html",
                     context={"form":form,
                             "message":message})
+
+
     form = AuthenticationForm()
     return render(request = request,
                     template_name = "stu_section/login.html",
-                    context={"form":form})
+                    context={"form":form,"message":message})
 
 
 

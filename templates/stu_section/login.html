@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prof_Section</title>
+    <title>Stu_Section</title>
     <link rel="stylesheet" href="{% static "stu_section/css/login.css" %}"">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -15,6 +15,9 @@
         <h1 style="color: cadetblue; ">
             Student's Page
         </h1>
+
+        <h6>{{ message }}</h6>
+
         <form method="POST" class="form">
         {% csrf_token %}
         {{form.as_p}}

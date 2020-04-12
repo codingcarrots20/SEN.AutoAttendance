@@ -26,31 +26,41 @@ def records(request):
 
 # Create your views here.
 def loginView(request):
+    message = ""
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
+
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('index/')
+            prof_obj = models.Prof.objects.filter(user__username = username)
+
+            if prof_obj.exists():
+
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    login(request, user)
+                    return redirect('index/')
+                else:
+                    message="Invalid username or password."
+                    return render(request = request,
+                        template_name = "prof_section/login.html",
+                        context={"form":form,
+                                "message":message})
             else:
-                message="Invalid username or password."
-                return render(request = request,
-                    template_name = "prof_section/login.html",
-                    context={"form":form,
-                            "message":message})
+                message="Please enter a correct username and password. Note that both fields may be case-sensitive."
+            
         else:
-            message= "Invalid username or password."
             return render(request = request,
                     template_name = "prof_section/login.html",
                     context={"form":form,
                             "message":message})
+
+                            
     form = AuthenticationForm()
     return render(request = request,
                     template_name = "prof_section/login.html",
-                    context={"form":form})
+                    context={"form":form,"message":message})
 
 @login_required(login_url='/login')
 def index(request):
