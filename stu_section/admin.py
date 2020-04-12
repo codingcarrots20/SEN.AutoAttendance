@@ -1,4 +1,8 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from . import models
+from .models import Student
 
-admin.site.register(models.StudentCourses)
+# Register your models here.
+admin.site.register(Student)
+

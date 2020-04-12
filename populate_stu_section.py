@@ -6,7 +6,7 @@ django.setup()
 
 import random
 from prof_section.models import AttendanceRecord,Prof
-from stu_section.models import StudentCourses
+from stu_section.models import Student
 from django.contrib.auth.models import User
 from faker import Faker
 
@@ -27,7 +27,7 @@ def populate_students_courses(N=3):
 
 	#create 3 prof with related to users created above, add courses
 	for i in range(N):
-		stud = StudentCourses(user=users[i],courses = random.choice(courses))
+		stud = Student(user=users[i],courses = random.choice(courses))
 		stud.save()
 
 
