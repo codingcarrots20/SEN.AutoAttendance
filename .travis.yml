@@ -12,5 +12,5 @@ install:
 
 
 script:
-  - python manage.py runserver
-  - python manage.py test
+
+  - python manage.py test stu_section
