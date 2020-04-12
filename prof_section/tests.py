@@ -10,7 +10,7 @@ from selenium.webdriver.common.keys import Keys
 class ProfLoginTestCase(LiveServerTestCase):
 
     def setUp(self):
-        self.selenium = webdriver.Firefox(executable_path="C:\\Users\\Mukund Kalra\\Downloads\\web-driver\\geckodriver")
+        self.selenium = webdriver.Firefox(executable_path=".\\geckodriver")
         super(ProfLoginTestCase, self).setUp()
 
     def tearDown(self):
@@ -29,8 +29,8 @@ class ProfLoginTestCase(LiveServerTestCase):
 
 
         #Fill the form with data
-        username.send_keys('mukund')
-        password.send_keys('password')
+        username.send_keys('admin')
+        password.send_keys('admin')
         
 
         #submitting the form
@@ -39,3 +39,4 @@ class ProfLoginTestCase(LiveServerTestCase):
 
         #check the returned result
         assert selenium.title== 'Prof_page'	
+
