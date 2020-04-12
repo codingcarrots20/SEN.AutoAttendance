@@ -8,18 +8,18 @@ django.setup()
 
 import random
 from prof_section.models import AttendanceRecord,Prof
-from stu_section.models import StudentCourses
+from stu_section.models import Student
 from django.contrib.auth.models import User
 from faker import Faker
 
 fake = Faker()
 
-ids = ['201701131','201701130','201701138','201701133']
+#ids = ['201701131','201701130','201701138','201701133']
 courses= ['IT413','CS203','HM413','IT303']
-default_prof_password =['password']
+default_prof_password ='password'
 
 def  add_attendance_record():
-	student = random.choice(StudentCourses.objects.all())
+	student = random.choice(Student.objects.all())
 	username = student.user.username
 	courseIDs = student.courses.split(" ")
 

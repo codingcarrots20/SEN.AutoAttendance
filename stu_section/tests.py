@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 import random
 from faker import Faker
 from prof_section.models import AttendanceRecord, Prof
-from stu_section.models import StudentCourses
+from stu_section.models import Student
 # Create your tests here.
 courses = ['IT413', 'CS203', 'HM413', 'IT303', 'EL203', 'MU12', 'OP125']
 faker = Faker()
@@ -70,7 +70,7 @@ class AdminTestCase(TestCase):
 
 # 	def setUp(self):
 
-# 		student = StudentCourses(user=self.user, courses=self.course)
+# 		student = Student(user=self.user, courses=self.course)
 # 		student.save()
 # 		record = AttendanceRecord(studentID=self.name, courseID=self.course)
 # 		record.save()
@@ -79,7 +79,7 @@ class AdminTestCase(TestCase):
 		
 # 		# self.assertContains(" ".join(ids),student.studentID)
 
-# 		student = StudentCourses.objects.get(user = self.user)
+# 		student = Student.objects.get(user = self.user)
 # 		attendance_record = AttendanceRecord.objects.get(studentID= self.name)
 # 		self.assertEqual(attendance_record.courseID in student.courses ,True)
 
