@@ -62,26 +62,26 @@ class AdminTestCase(TestCase):
 		self.assertEqual(admin.is_staff, True)
 
 
-class AttendanceRecordTestCase(TestCase):
-	name = faker.name()
-	course = random.choice(courses)
-	user = User(username=name, password=faker.password())
-	user.save()
+# class AttendanceRecordTestCase(TestCase):
+# 	name = faker.name()
+# 	course = random.choice(courses)
+# 	user = User(username=name, password=faker.password())
+# 	user.save()
 
-	def setUp(self):
+# 	def setUp(self):
 
-		student = StudentCourses(user=self.user, courses=self.course)
-		student.save()
-		record = AttendanceRecord(studentID=self.name, courseID=self.course)
-		record.save()
-	def test_student_is_registered(self):
-		"""Student is actually registered to take course"""
+# 		student = StudentCourses(user=self.user, courses=self.course)
+# 		student.save()
+# 		record = AttendanceRecord(studentID=self.name, courseID=self.course)
+# 		record.save()
+# 	def test_student_is_registered(self):
+# 		"""Student is actually registered to take course"""
 		
-		# self.assertContains(" ".join(ids),student.studentID)
+# 		# self.assertContains(" ".join(ids),student.studentID)
 
-		student = StudentCourses.objects.get(user = self.user)
-		attendance_record = AttendanceRecord.objects.get(studentID= self.name)
-		self.assertEqual(attendance_record.courseID in student.courses ,True)
+# 		student = StudentCourses.objects.get(user = self.user)
+# 		attendance_record = AttendanceRecord.objects.get(studentID= self.name)
+# 		self.assertEqual(attendance_record.courseID in student.courses ,True)
 
 
 
