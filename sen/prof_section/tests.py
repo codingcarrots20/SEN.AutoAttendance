@@ -38,4 +38,4 @@ class ProfLoginTestCase(LiveServerTestCase):
 
 
         #check the returned result
-        assert selenium.title== 'Prof_page'
+        assert selenium.title== 'Prof_page'	
