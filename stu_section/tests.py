@@ -6,51 +6,52 @@ from prof_section.models import AttendanceRecord, Prof
 from stu_section.models import Student
 # Create your tests here.
 
-courses = ['IT413', 'CS203', 'HM413', 'IT303', 'EL203', 'MU12', 'OP125']
-faker = Faker()
 
-# Selenium Tests
-from django.test import LiveServerTestCase
-import selenium
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+# # Selenium Tests
+# from django.test import LiveServerTestCase
+# import selenium
+# from selenium import webdriver
+# from selenium.webdriver.common.keys import Keys
 
 
-class StudentLoginTestCase(LiveServerTestCase):
+# class StudentLoginTestCase(LiveServerTestCase):
 
-    def setUp(self):
-        self.selenium = webdriver.Firefox(executable_path=".\\geckodriver")
-        super(StudentLoginTestCase, self).setUp()
+#     def setUp(self):
+#         self.selenium = webdriver.Firefox(executable_path=".\\geckodriver")
+#         super(StudentLoginTestCase, self).setUp()
 
-    def tearDown(self):
-        self.selenium.quit()
-        super(StudentLoginTestCase, self).tearDown()
+#     def tearDown(self):
+#         self.selenium.quit()
+#         super(StudentLoginTestCase, self).tearDown()
 
-    def test_prof_login(self):
-        selenium = self.selenium
-        #Opening the link we want to test
-        selenium.get('http://127.0.0.1:8000/stu_section/')
+#     def test_prof_login(self):
+#         selenium = self.selenium
+#         #Opening the link we want to test
+#         selenium.get('http://127.0.0.1:8000/stu_section/')
 
-        #find the form element
-        username = selenium.find_element_by_id('id_username')  
-        password = selenium.find_element_by_id('id_password')
-        submit = selenium.find_element_by_class_name('btn')
+#         #find the form element
+#         username = selenium.find_element_by_id('id_username')  
+#         password = selenium.find_element_by_id('id_password')
+#         submit = selenium.find_element_by_class_name('btn')
 
 
-        #Fill the form with data
-        username.send_keys('admin')
-        password.send_keys('admin')
+#         #Fill the form with data
+#         username.send_keys('admin')
+#         password.send_keys('admin')
         
 
-        #submitting the form
-        submit.click()	
+#         #submitting the form
+#         submit.click()	
 
 
-        #check the returned result
-        assert selenium.title== 'Document'	
+#         #check the returned result
+#         assert selenium.title== 'Document'	
 
 
 #Unit Test Cases
+courses = ['IT413', 'CS203', 'HM413', 'IT303', 'EL203', 'MU12', 'OP125']
+faker = Faker()
+
 class AdminTestCase(TestCase):
 	def setUp(self):
 		admin = User.objects.create(is_active=True,
