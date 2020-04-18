@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
     'b70b3fb6.ngrok.io',
     'localhost',
     'sen.pythonanywhere.com',
+    'https://mukundkal.herokuapp.com/'
 ]
 
 
