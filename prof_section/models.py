@@ -11,7 +11,7 @@ class AttendanceRecord(models.Model):
     dateTime = models.DateTimeField(default = datetime.now, blank=True)
 
     def __str__(self):
-    	return (self.studentID,self.courseID,self.dateTime)
+    	return self.studentID
 
 class Prof(models.Model):
     user = models.OneToOneField(
@@ -24,3 +24,4 @@ class Prof(models.Model):
     
     def __str__(self):
         return (self.user.username)
+
