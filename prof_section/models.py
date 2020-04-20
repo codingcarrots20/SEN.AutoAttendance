@@ -25,3 +25,6 @@ class Prof(models.Model):
     def __str__(self):
         return (self.user.username)
 
+class AttendanceToken(models.Model):
+    tokenNo = models.CharField(max_length = 10 )
+    courseID = models.CharField(max_length = 10 )

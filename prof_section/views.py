@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout,authenticate,login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from .models import AttendanceToken
 import random
 from django.http import JsonResponse
 import hashlib
@@ -84,8 +85,14 @@ def index(request):
 def getqr(request):
     
     course = request.GET["course"]
+    tokens = AttendanceToken.objects.filter(courseID = course)
+    if tokens.exists():
+        tokens.delete()
+    
     no = random.randint(0,299)
-
+    newToken = AttendanceToken(courseID=course,tokenNo = no)
+    newToken.save()
+    
     
     
     data={

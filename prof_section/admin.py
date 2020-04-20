@@ -1,8 +1,9 @@
 from django.contrib import admin
 from . import models
 
-admin.site.register(models.AttendanceRecord) # ,AttendanceRecordAdmin
+admin.site.register(models.AttendanceRecord)
 admin.site.register(models.Prof)
+admin.site.register(models.AttendanceToken)
 
 
 # For reordering apperance in the admin panel - fields
