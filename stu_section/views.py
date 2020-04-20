@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import logout,authenticate,login
 from django.contrib.auth.forms import AuthenticationForm
-from prof_section.models import AttendanceRecord
+from prof_section.models import AttendanceRecord,AttendanceToken
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from datetime import datetime
@@ -53,8 +53,13 @@ def scan(request):
 
 
 def test(request):
-    
-    qr = request.POST['qr']
+    if request.method == "POST":
+        qr = request.POST['qr']
+    else:
+        qr = request.GET['qr']
+        #removing quotes around qr
+
+
     usernm = request.user
     course = ""
     tokenNo = ""
