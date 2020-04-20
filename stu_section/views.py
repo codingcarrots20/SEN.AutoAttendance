@@ -76,7 +76,7 @@ def test(request):
     for i in range(5,len(qr)):
         tokenNo = tokenNo + qr[i]
 
-    print(qr)
+    print(course)
     print(tokenNo)
 
     if AttendanceToken.objects.filter(tokenNo = tokenNo).exists():
